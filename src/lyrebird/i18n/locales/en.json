@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "lang_code": "en",
+    "lang_name": "English",
+    "lang_native": "English",
+    "html_lang": "en"
+  },
+  "doc": {
+    "title": "Lyrebird — Cognitive mechanism extraction"
+  },
+  "nav": {
+    "about": "About",
+    "run": "Run",
+    "source": "Source",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "Multi-agent cognitive extraction",
+    "title_before": "See the mechanisms",
+    "title_italic": "behind",
+    "title_after": "the resume.",
+    "lead": "Six agents read the document, probe for critical incidents, score evidence, and surface mechanisms with provenance — not soft-skills clichés.",
+    "small_html": "Built on the architecture described in <a class=\"text-link\" href=\"/static/arch.md\">arch.md</a>. Real-time observability for every stage."
+  },
+  "form": {
+    "header": "Start a run",
+    "target_role.label": "Target role",
+    "target_role.optional": "(optional)",
+    "target_role.placeholder": "e.g. macOS endpoint-security architect",
+    "resume.label": "Resume",
+    "resume.hint": "(markdown, ≥80 chars)",
+    "resume.placeholder": "Paste the candidate's resume here…",
+    "resume.load_sample": "↳ Load sample resume",
+    "resume.loading": "loading…",
+    "turns.label": "Turns",
+    "min_incidents.label": "Min incidents",
+    "candidate.label": "Candidate ID",
+    "start": "Start extraction",
+    "starting": "Starting…",
+    "another": "Start another extraction",
+    "try_again": "Try again",
+    "hint": "Uses DeepSeek via the Anthropic-compatible endpoint. ~18 LLM calls per 6-turn run."
+  },
+  "obs": {
+    "header": "Live pipeline",
+    "status.starting": "starting",
+    "status.running": "running",
+    "status.completed": "completed",
+    "status.failed": "failed",
+    "pipeline.label": "Pipeline timeline",
+    "agent.label": "Agent activity",
+    "agent.waiting": "Waiting for the first agent…",
+    "agent.calls_one": "{n} call",
+    "agent.calls_other": "{n} calls",
+    "agent.running": "running…",
+    "agent.failed": "failed",
+    "log.label": "Event stream",
+    "tokens.in": "tokens in",
+    "tokens.out": "tokens out",
+    "tokens.calls": "LLM calls",
+    "stage.pii_scan": "PII scan",
+    "stage.intake": "Intake",
+    "stage.interview": "Interview",
+    "stage.evidence_mapping": "Evidence",
+    "stage.mechanism_naming": "Naming",
+    "stage.skeptic_review": "Skeptic",
+    "stage.publish": "Publish"
+  },
+  "report": {
+    "header": "Extraction report",
+    "stat.validated": "Validated",
+    "stat.probable": "Probable",
+    "stat.needs": "Needs more evidence",
+    "empty": "No mechanisms reached the publish threshold in this run. See the \"needs more evidence\" count above and consider raising turns.",
+    "mech.why": "Why it matters",
+    "mech.resume_rewrite": "Resume rewrite",
+    "mech.interview_narrative": "Interview narrative",
+    "mech.evidence": "Evidence"
+  },
+  "about": {
+    "header": "How it works",
+    "card1.eyebrow": "01 — Intake",
+    "card1.title": "Hypotheses, not labels",
+    "card1.body": "The intake agent reads the resume, identifies high-decision-density experiences, and proposes 2–5 hypothesis mechanisms — each tagged as \"to be probed\".",
+    "card2.eyebrow": "02 — Interview",
+    "card2.title": "Critical-incident probing",
+    "card2.body": "One question per turn, always rooted in a specific incident. Cues → constraints → judgment → tradeoffs → actions → verification. The interviewer rotates hypotheses to spread coverage.",
+    "card3.eyebrow": "03 — Naming & review",
+    "card3.title": "Evidence before naming",
+    "card3.body": "Every mechanism needs ≥2 distinct evidence cards, ≥1 from interview, and survives a skeptic that downgrades on overclaim, causal leaps, or missing anti-evidence."
+  },
+  "footer": {
+    "tagline": "Powered by DeepSeek via the Anthropic-compatible endpoint. Built per",
+    "arch_link": "arch.md"
+  },
+  "errors": {
+    "network": "Network error: {message}",
+    "server_rejected": "Server rejected the request:\n{detail}",
+    "sample_failed": "Failed to load sample: {message}"
+  }
+}

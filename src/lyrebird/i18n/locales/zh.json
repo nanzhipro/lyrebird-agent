@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "lang_code": "zh",
+    "lang_name": "中文",
+    "lang_native": "中文",
+    "html_lang": "zh-Hans"
+  },
+  "doc": {
+    "title": "Lyrebird — 认知机制萃取"
+  },
+  "nav": {
+    "about": "关于",
+    "run": "运行",
+    "source": "源码",
+    "language": "语言"
+  },
+  "hero": {
+    "eyebrow": "多智能体认知机制萃取",
+    "title_before": "看见简历",
+    "title_italic": "背后的",
+    "title_after": "认知机制。",
+    "lead": "六个智能体阅读简历、就关键事件追问、为证据打分、命名机制 — 带可追溯的引文,而不是空泛的软技能标签。",
+    "small_html": "实现遵循 <a class=\"text-link\" href=\"/static/arch.md\">arch.md</a>。每个阶段都有实时可观测性。"
+  },
+  "form": {
+    "header": "启动一次萃取",
+    "target_role.label": "目标岗位",
+    "target_role.optional": "(可选)",
+    "target_role.placeholder": "例如 macOS 终端安全架构师",
+    "resume.label": "简历",
+    "resume.hint": "(Markdown,≥80 字符)",
+    "resume.placeholder": "在这里粘贴候选人的简历…",
+    "resume.load_sample": "↳ 加载样本简历",
+    "resume.loading": "加载中…",
+    "turns.label": "轮数",
+    "min_incidents.label": "最少事件数",
+    "candidate.label": "候选人 ID",
+    "start": "开始萃取",
+    "starting": "启动中…",
+    "another": "再启动一次",
+    "try_again": "重试",
+    "hint": "通过 Anthropic-Compatible 端点调用 DeepSeek。6 轮约 18 次 LLM 调用。"
+  },
+  "obs": {
+    "header": "实时流水线",
+    "status.starting": "启动中",
+    "status.running": "运行中",
+    "status.completed": "已完成",
+    "status.failed": "失败",
+    "pipeline.label": "流水线时间线",
+    "agent.label": "智能体活动",
+    "agent.waiting": "等待第一个智能体…",
+    "agent.calls_one": "{n} 次调用",
+    "agent.calls_other": "{n} 次调用",
+    "agent.running": "运行中…",
+    "agent.failed": "失败",
+    "log.label": "事件流",
+    "tokens.in": "输入 token",
+    "tokens.out": "输出 token",
+    "tokens.calls": "LLM 调用",
+    "stage.pii_scan": "PII 扫描",
+    "stage.intake": "Intake",
+    "stage.interview": "深访",
+    "stage.evidence_mapping": "证据卡",
+    "stage.mechanism_naming": "机制命名",
+    "stage.skeptic_review": "怀疑者",
+    "stage.publish": "发布"
+  },
+  "report": {
+    "header": "萃取报告",
+    "stat.validated": "已验证",
+    "stat.probable": "高概率",
+    "stat.needs": "证据不足",
+    "empty": "本次运行没有机制达到发布阈值。请查看“证据不足”计数,考虑提高轮数。",
+    "mech.why": "为何重要",
+    "mech.resume_rewrite": "简历改写",
+    "mech.interview_narrative": "面试口播",
+    "mech.evidence": "证据"
+  },
+  "about": {
+    "header": "工作流程",
+    "card1.eyebrow": "01 — Intake",
+    "card1.title": "假设而非标签",
+    "card1.body": "Intake 智能体阅读简历,识别决策密度高的经历,提出 2–5 条「待求证」的机制假设。",
+    "card2.eyebrow": "02 — 深访",
+    "card2.title": "关键事件追问",
+    "card2.body": "每轮一个问题,始终围绕一个具体事件。线索 → 约束 → 判断 → 权衡 → 动作 → 验证。访谈者轮换假设以扩大覆盖。",
+    "card3.eyebrow": "03 — 命名与审查",
+    "card3.title": "证据先于命名",
+    "card3.body": "每个机制需要 ≥2 张不同证据卡、至少 1 张来自深访,且通过怀疑者审查 — 后者会就空泛、因果跳跃或缺反证降级置信度。"
+  },
+  "footer": {
+    "tagline": "由 DeepSeek 通过 Anthropic-Compatible 端点驱动。实现遵循",
+    "arch_link": "arch.md"
+  },
+  "errors": {
+    "network": "网络错误:{message}",
+    "server_rejected": "服务端拒绝了请求:\n{detail}",
+    "sample_failed": "加载样本失败:{message}"
+  }
+}

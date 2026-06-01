@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="doc.title">Lyrebird</title>
+  <link rel="icon" type="image/png" sizes="96x96" href="/static/img/logo-96.png?v=2" />
+  <link rel="icon" type="image/png" sizes="256x256" href="/static/img/logo-256.png?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/static/styles.css?v=5" />
+</head>
+<body>
+  <!-- top nav -->
+  <header class="top-nav">
+    <div class="container nav-row">
+      <a class="brand" href="/">
+        <img
+          class="brand-logo"
+          src="/static/img/logo-96.png?v=2"
+          srcset="/static/img/logo-96.png?v=2 1x, /static/img/logo-256.png?v=2 2x"
+          alt=""
+          width="28"
+          height="28"
+        />
+        <span class="brand-word">Lyrebird</span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link" href="#about" data-i18n="nav.about">About</a>
+        <a class="nav-link" href="#run" data-i18n="nav.run">Run</a>
+        <a class="nav-link text-link" href="https://github.com" target="_blank" rel="noopener" data-i18n="nav.source">Source</a>
+
+        <!-- Dropdown language switcher -->
+        <div class="lang-switcher" id="lang-switcher">
+          <button
+            type="button"
+            class="lang-trigger"
+            id="lang-trigger"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-controls="lang-menu"
+            aria-label="Language"
+          >
+            <span class="lang-trigger-label" id="lang-trigger-label">中文</span>
+            <svg class="lang-chevron" viewBox="0 0 10 6" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <ul class="lang-menu" id="lang-menu" role="listbox" hidden>
+            <!-- populated by JS -->
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero + form band -->
+    <section class="hero-band container" id="run">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <img
+            class="hero-logo"
+            src="/static/img/logo-256.png?v=2"
+            alt=""
+            width="88"
+            height="88"
+            loading="eager"
+            decoding="async"
+          />
+          <p class="eyebrow" data-i18n="hero.eyebrow"></p>
+          <h1 class="display-xl">
+            <span data-i18n="hero.title_before"></span>
+            <span class="serif-italic" data-i18n="hero.title_italic"></span>
+            <span data-i18n="hero.title_after"></span>
+          </h1>
+          <p class="lead" data-i18n="hero.lead"></p>
+          <p class="muted small" data-i18n-html="hero.small_html"></p>
+        </div>
+        <div class="hero-right">
+          <div class="feature-card form-card" id="form-card">
+            <h2 class="display-sm" data-i18n="form.header"></h2>
+
+            <label class="field">
+              <span class="label-text">
+                <span data-i18n="form.target_role.label"></span>
+                <span class="muted-soft" data-i18n="form.target_role.optional"></span>
+              </span>
+              <input
+                type="text"
+                id="f-target-role"
+                class="text-input"
+                data-i18n-placeholder="form.target_role.placeholder"
+              />
+            </label>
+
+            <label class="field">
+              <span class="label-text">
+                <span data-i18n="form.resume.label"></span>
+                <span class="muted-soft" data-i18n="form.resume.hint"></span>
+              </span>
+              <textarea
+                id="f-resume"
+                class="text-input text-area"
+                rows="9"
+                data-i18n-placeholder="form.resume.placeholder"
+              ></textarea>
+              <button type="button" class="button-text-link" id="btn-load-sample" data-i18n="form.resume.load_sample"></button>
+            </label>
+
+            <div class="field-row">
+              <label class="field">
+                <span class="label-text" data-i18n="form.turns.label"></span>
+                <input type="number" id="f-turns" class="text-input" value="6" min="2" max="12" />
+              </label>
+              <label class="field">
+                <span class="label-text" data-i18n="form.min_incidents.label"></span>
+                <input type="number" id="f-min-incidents" class="text-input" value="3" min="1" max="10" />
+              </label>
+              <label class="field">
+                <span class="label-text" data-i18n="form.candidate.label"></span>
+                <input type="text" id="f-candidate" class="text-input" value="cand_user" />
+              </label>
+            </div>
+
+            <button type="button" class="button-primary" id="btn-start" data-i18n="form.start"></button>
+            <p class="muted-soft small" id="form-hint" data-i18n="form.hint"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Observability band -->
+    <section class="observability-band container" id="observability" hidden>
+      <div class="band-header">
+        <h2 class="display-md" data-i18n="obs.header"></h2>
+        <div class="run-meta">
+          <span class="badge-pill" id="run-status-pill" data-i18n="obs.status.starting"></span>
+          <code class="mono small" id="run-id-display"></code>
+        </div>
+      </div>
+
+      <div class="product-mockup-card-dark stage-card">
+        <div class="card-header">
+          <span class="caption-uppercase" data-i18n="obs.pipeline.label"></span>
+          <span class="muted-on-dark small" id="stage-counter">0 / 7</span>
+        </div>
+        <div class="stage-strip" id="stage-strip"></div>
+      </div>
+
+      <div class="two-col">
+        <div class="feature-card">
+          <div class="card-header">
+            <span class="caption-uppercase ink" data-i18n="obs.agent.label"></span>
+            <span class="muted small" id="agent-counter">0</span>
+          </div>
+          <div class="agent-feed" id="agent-feed">
+            <div class="agent-feed-empty muted small" data-i18n="obs.agent.waiting"></div>
+          </div>
+          <div class="token-totals">
+            <span><span class="muted small" data-i18n="obs.tokens.in"></span> <code class="mono" id="tok-in">0</code></span>
+            <span><span class="muted small" data-i18n="obs.tokens.out"></span> <code class="mono" id="tok-out">0</code></span>
+            <span><span class="muted small" data-i18n="obs.tokens.calls"></span> <code class="mono" id="llm-calls">0</code></span>
+          </div>
+        </div>
+
+        <div class="product-mockup-card-dark log-card">
+          <div class="card-header">
+            <span class="caption-uppercase" data-i18n="obs.log.label"></span>
+            <span class="muted-on-dark small" id="event-counter">0</span>
+          </div>
+          <div class="event-log mono" id="event-log"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Report band -->
+    <section class="report-band container" id="report" hidden>
+      <h2 class="display-md" data-i18n="report.header"></h2>
+      <div class="feature-card report-card">
+        <div id="report-summary" class="report-summary"></div>
+        <div id="report-mechanisms" class="report-mechanisms"></div>
+        <div class="report-meta muted small">
+          <span id="report-pii"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About band -->
+    <section class="about-band" id="about">
+      <div class="container">
+        <h2 class="display-md" data-i18n="about.header"></h2>
+        <div class="three-up">
+          <div class="feature-card">
+            <span class="caption-uppercase muted" data-i18n="about.card1.eyebrow"></span>
+            <h3 class="title-md" data-i18n="about.card1.title"></h3>
+            <p data-i18n="about.card1.body"></p>
+          </div>
+          <div class="feature-card">
+            <span class="caption-uppercase muted" data-i18n="about.card2.eyebrow"></span>
+            <h3 class="title-md" data-i18n="about.card2.title"></h3>
+            <p data-i18n="about.card2.body"></p>
+          </div>
+          <div class="feature-card">
+            <span class="caption-uppercase muted" data-i18n="about.card3.eyebrow"></span>
+            <h3 class="title-md" data-i18n="about.card3.title"></h3>
+            <p data-i18n="about.card3.body"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div class="footer-brand">
+        <img
+          class="footer-logo"
+          src="/static/img/logo-96.png?v=2"
+          alt=""
+          width="24"
+          height="24"
+        />
+        <span class="brand-word-on-dark">Lyrebird</span>
+      </div>
+      <div class="muted-on-dark small">
+        <span data-i18n="footer.tagline"></span>
+        <a class="text-link-on-dark" href="/static/arch.md" data-i18n="footer.arch_link"></a>.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/app.js?v=5"></script>
+</body>
+</html>
